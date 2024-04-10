@@ -1,4 +1,4 @@
-package org.example.Bank.Service;
+package org.example.Bank;
 
 import org.example.Customer.Account;
 

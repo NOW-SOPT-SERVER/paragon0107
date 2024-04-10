@@ -1,6 +1,6 @@
 package org.example.Customer;
 
-import org.example.Bank.Service.BankService;
+import org.example.Bank.BankService;
 
 import java.util.*;
 

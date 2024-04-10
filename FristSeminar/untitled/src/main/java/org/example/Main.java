@@ -1,10 +1,8 @@
 package org.example;
 
-import org.example.Bank.Service.BankService;
 import org.example.Customer.Account;
 import org.example.Customer.UserService;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -20,7 +18,7 @@ public class Main {
             System.out.println("1. CreateUSer");
             System.out.println("2. login");
             System.out.println("3. BankService");
-            System.out.println("3. Exit");
+            System.out.println("4. Exit");
 
             int service = scanner.nextInt();
             switch (service) {
