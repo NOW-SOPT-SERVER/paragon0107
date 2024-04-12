@@ -1,4 +1,4 @@
-package org.example.Customer;
+package org.example.Bank.Service.Customer;
 
 public class Account {
     String name;

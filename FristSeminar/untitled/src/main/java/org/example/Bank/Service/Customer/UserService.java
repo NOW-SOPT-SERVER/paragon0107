@@ -1,6 +1,6 @@
-package org.example.Customer;
+package org.example.Bank.Service.Customer;
 
-import org.example.Bank.Service.BankService;
+import org.example.Bank.Service.BankServiceTemp;
 
 import java.util.*;
 
@@ -55,8 +55,8 @@ public class UserService {
             System.out.println("Do login");
             return;
         }
-        BankService bankService = new BankService(loginAccount,userList);
-        bankService.startBank();
+        BankServiceTemp bankServiceTemp = new BankServiceTemp(loginAccount,userList);
+        bankServiceTemp.startBank();
         loginAccount =null;
     }
 

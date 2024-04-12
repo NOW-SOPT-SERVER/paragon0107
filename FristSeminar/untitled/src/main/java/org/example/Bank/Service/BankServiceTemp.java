@@ -1,16 +1,16 @@
 package org.example.Bank.Service;
 
-import org.example.Customer.Account;
+import org.example.Bank.Service.Customer.Account;
 
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class BankService {
+public class BankServiceTemp {
     Account account;
     HashMap<Integer,Account> userList;
 
     static final Scanner scanner = new Scanner(System.in);
-    public BankService(Account account,HashMap<Integer,Account> userList){
+    public BankServiceTemp(Account account, HashMap<Integer,Account> userList){
         this.account = account;
         this.userList = userList;
     }
