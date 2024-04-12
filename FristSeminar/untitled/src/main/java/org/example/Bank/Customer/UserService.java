@@ -1,6 +1,10 @@
 package org.example.Bank.Service.Customer;
 
+<<<<<<< HEAD:FristSeminar/untitled/src/main/java/org/example/Bank/Service/Customer/UserService.java
 import org.example.Bank.Service.BankServiceTemp;
+=======
+import org.example.Bank.BankService;
+>>>>>>> d432c159f93ea07912942333328e9184b7410270:FristSeminar/untitled/src/main/java/org/example/Customer/UserService.java
 
 import java.util.*;
 

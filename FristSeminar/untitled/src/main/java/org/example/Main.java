@@ -1,7 +1,9 @@
 package org.example;
 
+
 import org.example.Bank.Service.Customer.Account;
 import org.example.Bank.Service.Customer.UserService;
+
 
 import java.util.Scanner;
 
@@ -21,6 +23,9 @@ public class Main {
             System.out.println("2. login");
             System.out.println("3. BankServiceTemp");
             System.out.println("3. Exit");
+            System.out.println("3. BankService");
+            System.out.println("4. Exit");
+
 
             int service = scanner.nextInt();
             switch (service) {
