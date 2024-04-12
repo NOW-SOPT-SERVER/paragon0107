@@ -13,6 +13,7 @@ public class UserRepository {
      public User loginUser = null;
     private static final UserRepository userRepository = new UserRepository();
     private UserRepository(){
+
     }
     public static UserRepository getInstance(){
         return userRepository;

@@ -6,25 +6,23 @@ import org.example.Repogitory.UserRepository;
 import org.example.Service.BankService;
 
 import java.util.Scanner;
+import org.example.Service.BankServiceInterface;
 import org.example.View.InputView;
 
 public class BankControl {
-
-    private final int REGISTER = 1;
-    private final int LOGIN = 2;
-    private final int START_BANK_SERVICE = 3;
-    private final int END_SERVICE = 4;
-
-    private final Scanner scanner = new Scanner(System.in);
-    private static final BankControl bankControl = new BankControl();
-    private BankControl(){};
-    private static final BankService bankService = BankService.getInstance();
-    private static final UserRepository userRepository = UserRepository.getInstance();
-
+    private static  BankService bankService;
+    private static UserRepository userRepository;
+    private BankControl(){
+        bankService = BankService.getInstance();
+        userRepository = UserRepository.getInstance();
+    };
     public static BankControl getInstance(){
         return bankControl;
     }
 
+    private final Scanner scanner = new Scanner(System.in);
+
+    private static final BankControl bankControl = new BankControl();
     private enum Menu{
         REGISTER(1, userRepository::addUser),
         LOGIN(2,userRepository::loginOrLogout),
