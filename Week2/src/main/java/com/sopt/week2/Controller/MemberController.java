@@ -1,6 +1,5 @@
 package com.sopt.week2.Controller;
 
-import com.sopt.week2.Domain.Member;
 import com.sopt.week2.Dto.MemberCreateDto;
 import com.sopt.week2.Dto.MemberFindDto;
 import com.sopt.week2.Dto.MemberListDto;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.net.URI;
-import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor

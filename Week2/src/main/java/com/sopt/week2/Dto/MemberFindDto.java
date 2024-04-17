@@ -4,6 +4,7 @@ import com.sopt.week2.Domain.Member;
 import com.sopt.week2.Domain.enums.Part;
 
 public record MemberFindDto(
+        Long id,
         String name,
         Part part,
         int age
@@ -12,6 +13,7 @@ public record MemberFindDto(
             Member member
     ) {
         return new MemberFindDto(
+                member.getId(),
                 member.getName(),
                 member.getPart(),
                 member.getAge()
