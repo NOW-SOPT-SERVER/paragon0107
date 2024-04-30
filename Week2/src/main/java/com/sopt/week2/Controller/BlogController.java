@@ -6,6 +6,7 @@ import com.sopt.week2.Common.Dto.SuccessStatusResponse;
 import com.sopt.week2.Service.BlogService;
 import com.sopt.week2.Service.Dto.BlogCreateRequest;
 import com.sopt.week2.Service.Dto.BlogTitleUpdateRequest;
+import com.sopt.week2.Service.Dto.PostCreateRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,16 @@ public class BlogController {
     ) {
         blogService.updateTitle(blogId, blogTitleUpdateRequest);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/blog/post")
+    public ResponseEntity<SuccessStatusResponse> createPost(
+            @RequestHeader Long memberId,
+            @RequestBody PostCreateRequest postCreateRequest
+    ){
+
+        return ResponseEntity.status(HttpStatus.CREATED).header("Location",blogService.createPost(memberId,postCreateRequest))
+                .body(SuccessStatusResponse.of(SuccessMessage.POST_CREAT_SUCCESS));
     }
 
 }

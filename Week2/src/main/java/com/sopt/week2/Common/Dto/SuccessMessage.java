@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum SuccessMessage {
     BlOG_CREAT_SUCCESS(HttpStatus.CREATED.value(),"블로그 생성이 완료되었습니다."),
+    POST_CREAT_SUCCESS(HttpStatus.CREATED.value(),"게시글 생성이 완료되었습니다."),
+
     ;
     private final int status;
     private final String message;
