@@ -5,7 +5,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import static com.sopt.week2.Execption.member.ErrorMessage.INVALID_MEMBER;
+
+import static com.sopt.week2.Common.Dto.ErrorMessage.MEMBER_NOT_FOUND;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
@@ -13,7 +14,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     default Member findMemberById(Long id) {
         return findById(id)
                 .orElseThrow(
-                        () -> new EntityNotFoundException(INVALID_MEMBER.message)
+                        () -> new EntityNotFoundException(MEMBER_NOT_FOUND.getMessage())
                 );
     }
 }

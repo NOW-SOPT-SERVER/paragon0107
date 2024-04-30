@@ -1,4 +1,4 @@
-package com.sopt.week2.Dto;
+package com.sopt.week2.Service.Dto;
 
 import com.sopt.week2.Domain.Member;
 import com.sopt.week2.Domain.enums.Part;
