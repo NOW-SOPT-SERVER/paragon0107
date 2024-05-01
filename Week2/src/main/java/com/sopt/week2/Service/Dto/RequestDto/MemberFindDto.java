@@ -1,4 +1,4 @@
-package com.sopt.week2.Service.Dto;
+package com.sopt.week2.Service.Dto.RequestDto;
 
 import com.sopt.week2.Domain.Member;
 import com.sopt.week2.Domain.enums.Part;
@@ -8,7 +8,7 @@ public record MemberFindDto(
         String name,
         Part part,
         int age
-) {
+) implements RequestDto{
     public static MemberFindDto of(
             Member member
     ) {

@@ -1,7 +1,7 @@
 package com.sopt.week2.Domain;
 
 
-import com.sopt.week2.Service.Dto.BlogCreateRequest;
+import com.sopt.week2.Service.Dto.RequestDto.BlogCreateRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

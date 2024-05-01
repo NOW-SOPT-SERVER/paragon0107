@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sopt.week2.Repository.BlogRepository;
 import com.sopt.week2.Repository.MemberRepository;
 import com.sopt.week2.Service.BlogService;
-import com.sopt.week2.Service.Dto.BlogCreateRequest;
+import com.sopt.week2.Service.Dto.RequestDto.BlogCreateRequest;
 import com.sopt.week2.Service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

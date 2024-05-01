@@ -4,9 +4,8 @@ package com.sopt.week2.Controller;
 import com.sopt.week2.Common.Dto.SuccessMessage;
 import com.sopt.week2.Common.Dto.SuccessStatusResponse;
 import com.sopt.week2.Service.BlogService;
-import com.sopt.week2.Service.Dto.BlogCreateRequest;
-import com.sopt.week2.Service.Dto.BlogTitleUpdateRequest;
-import com.sopt.week2.Service.Dto.PostCreateRequest;
+import com.sopt.week2.Service.Dto.RequestDto.BlogCreateRequest;
+import com.sopt.week2.Service.Dto.RequestDto.BlogTitleUpdateRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +28,7 @@ public class BlogController {
     ){
 
         return ResponseEntity.status(HttpStatus.CREATED).header("Location",blogService.create(memberId,blogCreateRequest))
-                .body(SuccessStatusResponse.of(SuccessMessage.BlOG_CREAT_SUCCESS));
+                .body(SuccessStatusResponse.of(SuccessMessage.BlOG_CREAT_SUCCESS,null));
     }
 
     @PatchMapping("/blog/{blogId}/title")
@@ -41,15 +40,6 @@ public class BlogController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/blog/post")
-    public ResponseEntity<SuccessStatusResponse> createPost(
-            @RequestHeader Long memberId,
-            @RequestBody PostCreateRequest postCreateRequest
-    ){
-
-        return ResponseEntity.status(HttpStatus.CREATED).header("Location",blogService.createPost(memberId,postCreateRequest))
-                .body(SuccessStatusResponse.of(SuccessMessage.POST_CREAT_SUCCESS));
-    }
 
 }
 

@@ -1,8 +1,8 @@
 package com.sopt.week2.Controller;
 
-import com.sopt.week2.Service.Dto.MemberCreateDto;
-import com.sopt.week2.Service.Dto.MemberFindDto;
-import com.sopt.week2.Service.Dto.MemberListDto;
+import com.sopt.week2.Service.Dto.RequestDto.MemberCreateDto;
+import com.sopt.week2.Service.Dto.RequestDto.MemberFindDto;
+import com.sopt.week2.Service.Dto.RequestDto.MemberListDto;
 import com.sopt.week2.Service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

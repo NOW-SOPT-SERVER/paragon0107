@@ -1,12 +1,16 @@
 package com.sopt.week2.Repository;
 
+
+
+import static com.sopt.week2.Common.Dto.ErrorMessage.MEMBER_NOT_FOUND;
+
 import com.sopt.week2.Domain.Member;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
-import static com.sopt.week2.Common.Dto.ErrorMessage.MEMBER_NOT_FOUND;
+
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
