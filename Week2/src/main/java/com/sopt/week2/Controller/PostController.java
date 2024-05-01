@@ -22,15 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class PostController {
-    PostService postService;
+    private final PostService postService;
     BlogService blogService;
     @PostMapping("/post")
     public ResponseEntity<SuccessStatusResponse> createPost(
             @RequestHeader Long memberId,
+            @RequestHeader Long blogId,
             @Valid @RequestBody PostCreateRequest postCreateRequest
     ){
-
-        return ResponseEntity.status(HttpStatus.CREATED).header("Location",postService.createPost(memberId,postCreateRequest))
+        postService.createPost(memberId,blogId,postCreateRequest);
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .body(SuccessStatusResponse.of(SuccessMessage.POST_CREAT_SUCCESS,null));
     }
     @GetMapping("/post/{postId}")

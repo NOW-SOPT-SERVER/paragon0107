@@ -1,6 +1,7 @@
 package com.sopt.week2.Domain;
 
 
+import com.sopt.week2.Service.BlogService;
 import com.sopt.week2.Service.Dto.RequestDto.PostCreateRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,7 +29,7 @@ public class Post  extends BaseTimeEntity{
         this.content = content;
         this.blog = blog;
     }
-    public static Post create(PostCreateRequest postCreateRequest){
-        return new Post(postCreateRequest.blog(), postCreateRequest.title(), postCreateRequest.content());
+    public static Post create(Blog blog,PostCreateRequest postCreateRequest){
+        return new Post(blog, postCreateRequest.title(), postCreateRequest.content());
     }
 }
