@@ -31,7 +31,9 @@ public class PostController {
             @Valid @RequestBody PostCreateRequest postCreateRequest
     ){
         postService.createPost(memberId,blogId,postCreateRequest);
-        return ResponseEntity.status(HttpStatus.CREATED)
+        return ResponseEntity.status(HttpStatus.CREATED).header(
+                "Location",
+                postService.createPost(memberId,blogId,postCreateRequest))
                 .body(SuccessStatusResponse.of(SuccessMessage.POST_CREAT_SUCCESS,null));
     }
     @GetMapping("/post/{postId}")

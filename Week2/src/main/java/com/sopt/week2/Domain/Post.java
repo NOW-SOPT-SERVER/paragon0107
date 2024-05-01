@@ -29,7 +29,10 @@ public class Post  extends BaseTimeEntity{
         this.content = content;
         this.blog = blog;
     }
-    public static Post create(Blog blog,PostCreateRequest postCreateRequest){
+    public static Post create(
+            Blog blog,
+            PostCreateRequest postCreateRequest
+    ){
         return new Post(blog, postCreateRequest.title(), postCreateRequest.content());
     }
 }

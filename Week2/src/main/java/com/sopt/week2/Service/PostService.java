@@ -21,19 +21,18 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-    MemberService memberService;
-    BlogService blogService;
-    PostRepository postRepository;
+    private final MemberService memberService;
+    private final BlogService blogService;
+    private final PostRepository postRepository;
 
-    public void createPost(Long memberId ,Long blogId, PostCreateRequest postCreateRequest){
+    public String createPost(Long memberId ,Long blogId, PostCreateRequest postCreateRequest){
         Member member = memberService.findById(memberId);
-        System.out.println(member);
         Blog blog = blogService.findById(blogId);
 
         if(!Objects.equals(blog.getMember().getId(), member.getId())){
             throw new NoAuthorizedException(BLOG_NOT_MATCHED_TO_MEMBER);
         }
-        postRepository.save(Post.create(blog,postCreateRequest));
+       return postRepository.save(Post.create(blog,postCreateRequest)).getId().toString();
 
     }
     public PostFindDto findPostById(Long postId){
