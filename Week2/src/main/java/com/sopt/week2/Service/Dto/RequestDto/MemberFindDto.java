@@ -8,7 +8,7 @@ public record MemberFindDto(
         String name,
         Part part,
         int age
-) implements RequestDto{
+) {
     public static MemberFindDto of(
             Member member
     ) {

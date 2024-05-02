@@ -14,11 +14,13 @@ import com.sopt.week2.Repository.PostRepository;
 import com.sopt.week2.Service.Dto.RequestDto.PostCreateRequest;
 import com.sopt.week2.Service.Dto.RequestDto.PostFindDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class PostService {
     private final MemberService memberService;
@@ -36,10 +38,8 @@ public class PostService {
 
     }
     public PostFindDto findPostById(Long postId){
-
-        return PostFindDto.of(postRepository.findById(postId).orElseThrow(
-                ()-> new NotFoundException(ErrorMessage.POST_NOT_FOUND)
-        ));
+        log.info("서비스 단 진입");
+        return PostFindDto.of(postRepository.findPostById(postId));
     }
 
 

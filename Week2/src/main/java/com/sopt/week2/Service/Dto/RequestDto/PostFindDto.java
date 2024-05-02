@@ -5,17 +5,21 @@ import com.sopt.week2.Domain.Post;
 
 public record PostFindDto(
         Long id,
+        Long blogId,
         String title,
-        String content,
-        Blog blog
-) implements RequestDto{
-    public PostFindDto(Long id, String title, String content, Blog blog) {
+        String content
+
+) {
+    public PostFindDto(Long id,Long blogId, String title, String content) {
         this.id = id;
+        this.blogId = blogId;
         this.title = title;
         this.content = content;
-        this.blog = blog;
+
+
     }
     public static PostFindDto of(Post post){
-        return new PostFindDto(post.getId(), post.getTitle(), post.getContent(), post.getBlog());
+        Long blogId = post.getBlog().getId();
+        return new PostFindDto(post.getId(), blogId,post.getTitle(), post.getContent());
     }
 }

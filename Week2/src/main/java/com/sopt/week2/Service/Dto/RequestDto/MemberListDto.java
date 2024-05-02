@@ -7,7 +7,7 @@ import java.util.List;
 public record MemberListDto(
         Long size,
         List<Member> memberList
-)implements RequestDto {
+) {
 
     public static MemberListDto of(List<Member> memberList) {
         return new MemberListDto(

@@ -1,15 +1,16 @@
 package com.sopt.week2.Common.Dto;
 
-import com.sopt.week2.Service.Dto.RequestDto.RequestDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.annotation.Nullable;
 
-public record SuccessStatusResponse(
+public record SuccessStatusResponse<T>(
         int status,
         String message,
-        RequestDto data
+        T data
         ) {
-    public static SuccessStatusResponse of(SuccessMessage successMessage,@Nullable RequestDto data){
+    public static <T>SuccessStatusResponse<T> of(SuccessMessage successMessage,@Nullable T data){
 
-        return new SuccessStatusResponse(successMessage.getStatus(), successMessage.getMessage(),data);
+        return new SuccessStatusResponse<T>(successMessage.getStatus(), successMessage.getMessage(),data);
     }
+
 }
