@@ -40,7 +40,6 @@ public class PostController {
     public ResponseEntity<SuccessStatusResponse> findPostById(
             @PathVariable Long postId
     ){
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(SuccessStatusResponse.of(SuccessMessage.POST_SEARCH_SUCCESS,postService.findPostById(postId)));
+        return ResponseEntity.ok(SuccessStatusResponse.of(SuccessMessage.POST_SEARCH_SUCCESS,postService.findPostById(postId)));
     }
 }

@@ -36,6 +36,7 @@ public class PostService {
 
     }
     public PostFindDto findPostById(Long postId){
+
         return PostFindDto.of(postRepository.findById(postId).orElseThrow(
                 ()-> new NotFoundException(ErrorMessage.POST_NOT_FOUND)
         ));
