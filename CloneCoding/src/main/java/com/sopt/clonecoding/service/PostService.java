@@ -1,15 +1,25 @@
 package com.sopt.clonecoding.service;
 
+import static com.sopt.clonecoding.domain.enums.Location.DAEGU;
+import static com.sopt.clonecoding.domain.enums.Location.SEOUL;
+
 import com.sopt.clonecoding.domain.Post;
 import com.sopt.clonecoding.domain.User;
+import com.sopt.clonecoding.domain.enums.Location;
 import com.sopt.clonecoding.dto.request.PostCreateDto;
 import com.sopt.clonecoding.dto.request.UserCreateDto;
 import com.sopt.clonecoding.dto.response.PostFindDto;
+import com.sopt.clonecoding.dto.response.PostFindListDto;
 import com.sopt.clonecoding.dto.response.UserFindDto;
 import com.sopt.clonecoding.exception.CustomException;
 import com.sopt.clonecoding.exception.ErrorCode;
 import com.sopt.clonecoding.repository.PostRepository;
 import com.sopt.clonecoding.repository.UserRepository;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +63,10 @@ public class PostService {
     }
     public PostFindDto findPostById(Long postId){
         return PostFindDto.of(postRepository.findPostById(postId));
+    }
+
+    public List<PostFindDto> findPostByLocationId(int locationId){
+        return  PostFindListDto.of(postRepository.findByLocation(Location.BUSAN.getLocation(locationId)));
     }
 
 }

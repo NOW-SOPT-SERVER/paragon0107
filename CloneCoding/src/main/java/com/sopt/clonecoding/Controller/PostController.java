@@ -1,13 +1,16 @@
 package com.sopt.clonecoding.controller;
 
+import com.sopt.clonecoding.domain.Post;
 import com.sopt.clonecoding.dto.common.ResponseDto;
 import com.sopt.clonecoding.dto.request.PostCreateDto;
 import com.sopt.clonecoding.dto.request.UserCreateDto;
 import com.sopt.clonecoding.dto.response.PostFindDto;
+import com.sopt.clonecoding.dto.response.PostFindListDto;
 import com.sopt.clonecoding.dto.response.UserFindDto;
 import com.sopt.clonecoding.service.PostService;
 import com.sopt.clonecoding.service.UserService;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,13 +32,20 @@ public class PostController {
             @RequestHeader Long userId,
             @Valid @RequestBody PostCreateDto postCreateDto
     ){
-        return ResponseDto.ok(postService.createPost(userId,postCreateDto));
+        return ResponseDto.created(postService.createPost(userId,postCreateDto));
     }
 
     @GetMapping("/{postId}")
     public ResponseDto<PostFindDto> findPostById(
             @PathVariable Long postId
     ){
-        return ResponseDto.created(postService.findPostById(postId));
+        return ResponseDto.ok(postService.findPostById(postId));
+
+    }
+    @GetMapping("/location/{locationId}")
+    public ResponseDto<List<PostFindDto>> findPostByLocationId(
+            @PathVariable int locationId
+            ){
+        return ResponseDto.ok(postService.findPostByLocationId(locationId));
     }
 }
