@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Blog
+public class Blog extends BaseTimeEntity
 {
 
     @Id

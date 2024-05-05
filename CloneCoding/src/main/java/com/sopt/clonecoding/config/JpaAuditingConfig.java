@@ -1,4 +1,4 @@
-package com.sopt.week2.Config;
+package com.sopt.clonecoding.config;
 
 
 import org.springframework.context.annotation.Configuration;
