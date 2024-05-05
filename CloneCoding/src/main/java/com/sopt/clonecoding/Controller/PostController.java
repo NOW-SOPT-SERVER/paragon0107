@@ -7,11 +7,13 @@ import com.sopt.clonecoding.dto.response.PostFindDto;
 import com.sopt.clonecoding.dto.response.UserFindDto;
 import com.sopt.clonecoding.service.PostService;
 import com.sopt.clonecoding.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +26,10 @@ public class PostController {
 
     @PostMapping
     public ResponseDto<Long> createPost(
-            @RequestBody PostCreateDto postCreateDto
+            @RequestHeader Long userId,
+            @Valid @RequestBody PostCreateDto postCreateDto
     ){
-        return ResponseDto.ok(postService.createPost(postCreateDto));
+        return ResponseDto.ok(postService.createPost(userId,postCreateDto));
     }
 
     @GetMapping("/{postId}")

@@ -14,6 +14,7 @@ public class UserService {
 
     public String createUser(UserCreateDto userCreateDto) {
         User user = User.create(userCreateDto.nickname());
+        System.out.println(user.getNickName());
         userRepository.save(user);
         return user.getUserId().toString();
     }

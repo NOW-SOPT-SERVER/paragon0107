@@ -19,8 +19,9 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public Long createPost(PostCreateDto postCreateDto) {
-        User user = userRepository.findUserById(postCreateDto.userID());
+    public Long createPost(Long userId, PostCreateDto postCreateDto) {
+        System.out.println(userId);
+        User user = userRepository.findUserById(userId);
         return switch (postCreateDto.tradeType()){
             case SALE -> {
                 Post post = Post.createSalePost(

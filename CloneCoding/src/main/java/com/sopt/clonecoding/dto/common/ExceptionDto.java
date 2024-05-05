@@ -4,7 +4,6 @@ import com.sopt.clonecoding.exception.ErrorCode;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-@Getter
 public record ExceptionDto(
         HttpStatus code,
          String message

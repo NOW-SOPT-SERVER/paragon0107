@@ -4,6 +4,7 @@ package com.sopt.clonecoding.domain;
 import com.sopt.clonecoding.domain.enums.Location;
 import com.sopt.clonecoding.domain.enums.Status;
 import com.sopt.clonecoding.domain.enums.TradeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -23,19 +24,19 @@ import lombok.NoArgsConstructor;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long postId;
+    private Long postId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    User user;
+    private User user;
 
-    String title;
-    TradeType tradeType;
-    int price;
-    boolean openOffer;
-    boolean openDraw;
-    String description;
-    Location location;
-    Status status;
+    private String title;
+    private TradeType tradeType;
+    private int price;
+    private boolean openOffer;
+    private boolean openDraw;
+    private String description;
+    private Location location;
+    private Status status;
 
     @Builder
     private Post(User user,
@@ -95,7 +96,7 @@ public class Post {
                 .location(location)
                 .openOffer(false)
                 .openDraw(openDraw)
-                .tradeType(TradeType.SALE)
+                .tradeType(TradeType.DRAW)
                 .status(Status.AVAILABLE)
                 .build();
     }

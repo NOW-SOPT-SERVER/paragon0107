@@ -1,13 +1,10 @@
 package com.sopt.clonecoding.dto.request;
 
 import com.sopt.clonecoding.domain.enums.Location;
-import com.sopt.clonecoding.domain.enums.Status;
 import com.sopt.clonecoding.domain.enums.TradeType;
-import com.sopt.clonecoding.dto.response.UserFindDto;
 import jakarta.validation.constraints.Size;
 
 public record PostCreateDto(
-        Long userID,
         @Size(max = 20,message = "게시글 제목이 최대 글자 수(20자)를 초과했습니다.") String title,
         TradeType tradeType,
         int price,
