@@ -12,11 +12,18 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+
+import java.util.HashSet;
+import java.util.Set;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 @Entity
 @Getter
@@ -37,6 +44,9 @@ public class Post {
     private String description;
     private Location location;
     private Status status;
+
+    @ManyToMany(mappedBy = "likedPosts")
+    private Set<User> likedByUsers = new HashSet<>();
 
     @Builder
     private Post(User user,

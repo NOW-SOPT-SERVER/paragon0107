@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +41,14 @@ public class PostController {
             @PathVariable Long postId
     ){
         return ResponseDto.ok(postService.findPostById(postId));
+
+    }
+    @PatchMapping("/{postId}/like")
+    public ResponseDto<Integer> Like(
+            @RequestHeader Long userId,
+            @PathVariable Long postId
+    ){
+        return ResponseDto.ok(postService.like(postId,userId));
 
     }
     @GetMapping("/location/{locationId}")

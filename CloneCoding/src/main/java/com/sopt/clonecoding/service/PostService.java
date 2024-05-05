@@ -15,6 +15,7 @@ import com.sopt.clonecoding.exception.CustomException;
 import com.sopt.clonecoding.exception.ErrorCode;
 import com.sopt.clonecoding.repository.PostRepository;
 import com.sopt.clonecoding.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -68,5 +69,19 @@ public class PostService {
     public List<PostFindDto> findPostByLocationId(int locationId){
         return  PostFindListDto.of(postRepository.findByLocation(Location.BUSAN.getLocation(locationId)));
     }
+    @Transactional
+    public int like(Long postId,Long userId){
+        Post post = postRepository.findPostById(postId);
+        User user = userRepository.findUserById(userId);
+        if(user.getLikedPosts().contains(post)){
+            post.getLikedByUsers().remove(user);
+            user.getLikedPosts().remove(post);
+        }else {
+            post.getLikedByUsers().add(user);
+            user.getLikedPosts().add(post);
+        }
+        return post.getLikedByUsers().size();
+    }
+
 
 }

@@ -6,7 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +27,9 @@ public class User {
 
     @Column(name = "nick_name",nullable = false)
     private String nickName;
+
+    @ManyToMany
+    private Set<Post> likedPosts = new HashSet<>();
     private User(String nickName){
         this.nickName = nickName;
    }

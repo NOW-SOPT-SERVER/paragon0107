@@ -20,7 +20,9 @@ public record PostFindDto(
         boolean openDraw,
         String description,
         Location location,
-        Status status) {
+        Status status,
+        int likeCount
+) {
     public static PostFindDto of(Post post){
         return new PostFindDto(
                 post.getPostId(),
@@ -32,7 +34,8 @@ public record PostFindDto(
                 post.isOpenDraw(),
                 post.getDescription(),
                 post.getLocation(),
-                post.getStatus()
+                post.getStatus(),
+                post.getLikedByUsers().size()
         );
     }
 }
