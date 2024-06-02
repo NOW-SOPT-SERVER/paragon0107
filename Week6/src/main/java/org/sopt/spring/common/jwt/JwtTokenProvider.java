@@ -3,10 +3,10 @@ package org.sopt.spring.common.jwt;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
-import org.sopt.spring.common.auth.UserAuthentication;
-import org.sopt.spring.common.auth.redis.domain.Token;
-import org.sopt.spring.common.auth.redis.repository.RedisTokenRepository;
-import org.sopt.spring.member.service.dto.TokenDto;
+import org.sopt.spring.auth.UserAuthentication;
+import org.sopt.spring.auth.dto.TokenDto;
+import org.sopt.spring.auth.redis.domain.Token;
+import org.sopt.spring.auth.redis.repository.RedisTokenRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -32,14 +32,12 @@ public class JwtTokenProvider {
     public String issueAccessToken(final Authentication authentication) {
         return generateToken(authentication, ACCESS_TOKEN_EXPIRATION_TIME);
     }
-    public String issueRefreshToken(final Authentication authentication,Long memberId) {
-        String refreshToken = generateToken(authentication, REFRESH_TOKEN_EXPIRATION_TIME);
-        redisTokenRepository.save(Token.builder().id(memberId).refreshToken(refreshToken).build());
-        return refreshToken;
+    public String issueRefreshToken(final Authentication authentication) {
+        return generateToken(authentication, REFRESH_TOKEN_EXPIRATION_TIME);
     }
-    public TokenDto createAllToken(Long memberId){
-        UserAuthentication authentication = UserAuthentication.createUserAuthentication(memberId);
-        return TokenDto.of(issueAccessToken(authentication),issueRefreshToken(authentication,memberId));
+    public TokenDto createAllToken(UserAuthentication authentication){
+
+        return TokenDto.of(issueAccessToken(authentication),issueRefreshToken(authentication));
     }
 
 
