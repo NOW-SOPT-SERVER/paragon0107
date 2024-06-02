@@ -1,6 +1,6 @@
 ---
 name: Custom issue template
-about: 합동세미나 7조 서버 이슈 템플릿
+about: 이슈 템플릿
 title: ''
 labels: ''
 assignees: ''
